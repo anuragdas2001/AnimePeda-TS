@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,Outlet } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext";
 
 const navlinks = [
@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
           <label className="swap swap-rotate">
             <input
               type="checkbox"
-              checked={isDark}
+              defaultChecked
               onClick={toggleTheme}
               className="theme-controller"
               value="synthwave"
@@ -59,6 +59,7 @@ export const Navbar: React.FC = () => {
           </label>
         </ul>
       </div>
+      <Outlet/>
     </>
   );
 };
