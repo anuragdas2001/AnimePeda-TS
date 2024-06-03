@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import Card from "./Card";
 import { LoadingHome } from "./Loading Components/LoadingHome";
 import axios from "axios";
-// import { SearchBarAnime } from "./SearchAnime";
+import { SearchBarAnime } from "./SearchBarAnime";
 import { useDarkMode } from "../context/DarkModeContext";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -90,7 +90,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      {/* <SearchBarAnime onSearch={handleSearch} /> */}
+      <SearchBarAnime onSearch={handleSearch} />
       <Card
         animeData={anime}
         lastAnimeElementRef={lastAnimeElementRef}

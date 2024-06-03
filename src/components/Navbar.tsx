@@ -37,6 +37,7 @@ export const Navbar: React.FC = () => {
             <input
               type="checkbox"
               defaultChecked
+              checked={isDark}
               onClick={toggleTheme}
               className="theme-controller"
               value="synthwave"
