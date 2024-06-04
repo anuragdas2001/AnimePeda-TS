@@ -21,6 +21,7 @@ export const Home: React.FC = () => {
       const res = await axios.get(
         `https://api.jikan.moe/v4/top/anime?limit=20&page=${page}`
       );
+      console.log(res); 
       setAnime((prev) => [...prev, ...res.data.data]);
       setIsLoading(false);
     } catch (error) {
