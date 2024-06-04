@@ -15,8 +15,13 @@ export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({ children }) 
   const [isDark, setIsDark] = useState<boolean>(true);
 
   useEffect(() => {
-    const isDarkFromStorage = localStorage.getItem("isdark") === "true";
-    setIsDark(isDarkFromStorage);
+    const isDarkFromStorage = localStorage.getItem("isdark");
+    if (isDarkFromStorage === null) {
+      localStorage.setItem("isdark", "true");
+      setIsDark(true);
+    } else {
+      setIsDark(isDarkFromStorage === "true");
+    }
   }, []);
 
   useEffect(() => {

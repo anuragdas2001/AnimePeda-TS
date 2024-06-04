@@ -88,7 +88,7 @@ export const Home: React.FC = () => {
   // }, [isDark]);
 
   console.log(anime);
-
+  console.log(isDark)
   return (
     <>
       <div className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
