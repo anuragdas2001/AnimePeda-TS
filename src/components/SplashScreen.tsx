@@ -1,33 +1,21 @@
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-export const SplashScreen : React.FC = () => {
+export const SplashScreen: React.FC = () => {
   const words1 = `Animepedia`;
   const words2 = `For anime lovers by anime lovers`;
   const navigate = useNavigate();
-  useEffect(() => {
-    setTimeout(() => {
-      navigate("/signup");
-    }, 3000);
-  }, []);
+    useEffect(() => {
+      setTimeout(() => {
+        navigate("/signup");
+      }, 3000);
+    }, []);
 
   return (
     <>
-      <div>
-        <div>
-          <div className="absolute top-0 right-0 ">
-            <img
-              src="/DeathNoteSplash.png"
-              alt=""
-              className=" w-11/12"
-            />
-          </div>
-          {/* <div>
-          <img src="/public/346005_prev_ui.png" alt="" />
-        </div>
-        <div>
-          <img src="/public/Remove-bg.ai_1716302423231.png" alt="" />
-        </div> */}
+      <div className="bg-black">
+        <div className="top-0 float-end p-4 w-5/12 h-screen">
+          <img src="/DeathNoteSplash.png" alt="" className=" w-full h-full ml-8" />
         </div>
         <div className="flex justify-start m-10 ">
           <TextGenerateEffect
@@ -37,7 +25,7 @@ export const SplashScreen : React.FC = () => {
             textsize={"text-6xl"}
           />
         </div>
-        <div className="flex justify-start mt-40 ml-20 ">
+        <div className="flex justify-start mt-40 ml-10 ">
           <TextGenerateEffect
             className="covered-by-your-grace-regular "
             words={words2}
