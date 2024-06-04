@@ -21,7 +21,7 @@ export const Home: React.FC = () => {
       const res = await axios.get(
         `https://api.jikan.moe/v4/top/anime?limit=20&page=${page}`
       );
-      console.log(res); 
+      console.log(res);
       setAnime((prev) => [...prev, ...res.data.data]);
       setIsLoading(false);
     } catch (error) {
@@ -91,25 +91,27 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <SearchBarAnime onSearch={handleSearch} />
-      <Card
-        animeData={anime}
-        lastAnimeElementRef={lastAnimeElementRef}
-        isDark={isDark}
-      />
-      {isLoading && (
-        <div
+      <div className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
+        <SearchBarAnime onSearch={handleSearch} />
+        <Card
+          animeData={anime}
+          lastAnimeElementRef={lastAnimeElementRef}
+          isDark={isDark}
+        />
+        {isLoading && (
+          <div
           // style={{
           //   position: "fixed",
           //   top: "50%",
           //   left: "50%",
           //   transform: "translate(-50%, -50%)",
           // }}
-        >
-          <LoadingHome />
-        </div>
-      )}
-      {/* <ToastContainer /> */}
+          >
+            <LoadingHome />
+          </div>
+        )}
+        {/* <ToastContainer /> */}
+      </div>
     </>
   );
 };
