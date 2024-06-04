@@ -17,7 +17,7 @@ export const SplashScreen : React.FC = () => {
         <div>
           <div className="absolute top-0 right-0 ">
             <img
-              src="[removal.ai]_39e30eb5-a3c7-4236-b25e-6c034500c862-358582_FF8X4J.png"
+              src="/DeathNoteSplash.png"
               alt=""
               className=" w-11/12"
             />
