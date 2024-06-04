@@ -37,7 +37,7 @@ export const Login: React.FC = () => {
             alt=""
           />
         </div>
-        <h1 className="covered-by-your-grace-regular text-center text-3xl font-bold mb-10 mt-32 ">
+        <h1 className="covered-by-your-grace-regular text-center text-3xl font-bold mb-10 mt-32 text-white">
           Login
         </h1>
         <div className="flex justify-center mt-10 covered-by-your-grace-regular ">
