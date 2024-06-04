@@ -33,7 +33,7 @@ export const SplashScreen: React.FC = () => {
             textsize={"text-5xl"}
           />
         </div>
-        <div className="absolute bottom-0 flex items-center justify-center w-full transform translate-x-0">
+        <div className="absolute bottom-0 flex items-center justify-center w-full transform translate-x-0 text-white">
           <span>Made with</span>
           <img
             src="https://img.icons8.com/?size=100&id=19411&format=png&color=000000"
