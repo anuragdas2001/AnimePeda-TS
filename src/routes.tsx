@@ -4,6 +4,7 @@ import { Home } from "./components/Home";
 import { Manga } from "./components/Manga";
 import { Genre } from "./components/Genre";
 import { GenreItems } from "./components/GenreItem";
+import { StreamAnime } from "./components/StreamAnime";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,4 +17,5 @@ export const router = createBrowserRouter([
 
     ],
   },
+  { path: "/StreamAnime/:anime/:episode", element: <StreamAnime /> },
 ]);

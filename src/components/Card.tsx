@@ -1,6 +1,7 @@
 import React from "react";
 import { CardItem } from "./CardItem";
 interface Anime {
+    title:string;
     title_english: string;
     title_japanese: string;
     genres: { name: string }[];
@@ -25,11 +26,13 @@ const Card:React.FC<CardProps> = ({ animeData, lastAnimeElementRef, isDark }) =>
     <>
       {animeData.map((anime, index) => {
         console.log("English", anime.title_english);
+        console.log("Title",anime.title);
         if (animeData.length === index + 1) {
           return (
             <CardItem
               ref={lastAnimeElementRef}
               key={index}
+              title={anime.title}
               title_english={anime.title_english}
               title_japanese={anime.title_japanese}
               genres={anime.genres}
@@ -48,6 +51,7 @@ const Card:React.FC<CardProps> = ({ animeData, lastAnimeElementRef, isDark }) =>
           return (
             <CardItem
               key={index}
+              title={anime.title}
               title_english={anime.title_english}
               title_japanese={anime.title_japanese}
               genres={anime.genres}

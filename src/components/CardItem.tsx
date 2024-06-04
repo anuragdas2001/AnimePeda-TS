@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 interface CardItemProps {
+  title:string;
   title_english:string;
   title_japanese:string;
   genres: { name: string }[];
@@ -18,6 +19,7 @@ interface CardItemProps {
 export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
   (
     {
+      title,
       title_english,
       title_japanese,
       genres,
@@ -87,7 +89,7 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
                 </button>
               </a>
               {/* {console.log(title)} */}
-              <Link to={`/StreamAnime/${title_japanese}/episode-${1}`}>
+              <Link to={`/StreamAnime/${title}/episode-${1}`}>
                 <a href={trailer} target="_blank" rel="noopener noreferrer">
                   <button className=" h-10 w-auto  bg-lime-500 rounded-md text-sm p-2">
                     Watch Now
