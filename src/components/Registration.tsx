@@ -64,6 +64,7 @@ export const Registration: React.FC = () => {
           alt="Centered Image"
         ></img>
       </div> */}
+      <div className="border-2 border-yellow-500 h-screen bg-black text-white">
       <div className="w-full ml-14">
         <img
           src="https://media.giphy.com/media/Lpi3F7hFedErKjGvvC/giphy.gif"
@@ -88,14 +89,14 @@ export const Registration: React.FC = () => {
             <input
               type="text"
               placeholder="Username"
-              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-3"
+              className="bg-slate-700 text-slate-500 rounded-xl p-3 w-full mb-3"
             />
           </div>
           <div className="mb-4">
             <input
               type="email"
               placeholder="Email"
-              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-3"
+              className="bg-slate-700 text-slate-500 rounded-xl p-3 w-full mb-3"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -104,7 +105,7 @@ export const Registration: React.FC = () => {
             <input
               type="password"
               placeholder="Password"
-              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-6"
+              className="bg-slate-700 text-slate-500 rounded-xl p-3 w-full mb-6"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -174,6 +175,8 @@ export const Registration: React.FC = () => {
         title="Giphy Embed"
       ></iframe>
     </div> */}
+      </div>
+      
     </>
   );
 };
