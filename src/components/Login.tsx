@@ -26,11 +26,11 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <div className="bg-black"> 
-        <div className="absolute">
+      <div className="bg-black border-2 border-orange-500 h-screen"> 
+        <div className="absolute mt-20">
           <img src="/onepiece.png" className="h-52" alt="" />
         </div>
-        <div className="absolute right-0">
+        <div className="absolute mt-20 right-0">
           <img
             src="/sololeveling-removebg.png"
             className="h-80 w-full"
