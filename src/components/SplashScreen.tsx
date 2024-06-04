@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 export const SplashScreen: React.FC = () => {
   const words1 = `Animepedia`;
   const words2 = `For anime lovers by anime lovers`;
-//   const navigate = useNavigate();
-//     useEffect(() => {
-//       setTimeout(() => {
-//         navigate("/signup");
-//       }, 3000);
-//     }, []);
+  const navigate = useNavigate();
+    useEffect(() => {
+      setTimeout(() => {
+        navigate("/signup");
+      }, 3000);
+    }, []);
 
   return (
     <>
