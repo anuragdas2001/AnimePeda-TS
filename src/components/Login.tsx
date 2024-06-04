@@ -25,12 +25,12 @@ export const Login:React.FC = () => {
   };
 
 
-  
+
   return (
     <>
       <div className="absolute">
         <img
-          src="/Remove-bg.ai_1716302423231.png"
+          src="/onepiece.png"
           className="h-52"
           alt=""
         />
