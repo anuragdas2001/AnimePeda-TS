@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/FirebaseInit";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export const Login:React.FC = () => {
+export const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
@@ -24,55 +24,51 @@ export const Login:React.FC = () => {
       });
   };
 
-
-
   return (
     <>
-      <div className="absolute">
-        <img
-          src="/onepiece.png"
-          className="h-52"
-          alt=""
-        />
-      </div>
-      <div className="absolute right-0">
-        <img
-          src="/sololeveling-removebg.png"
-          className="h-80 w-full"
-          alt=""
-        />
-      </div>
-      <h1 className="covered-by-your-grace-regular text-center text-3xl font-bold mb-10 mt-32 ">
-        Login
-      </h1>
-      <div className="flex justify-center mt-10 covered-by-your-grace-regular ">
-        <form className="w-full max-w-xs">
-          <div className="mb-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-3"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <input
-              type="password"
-              placeholder="Password"
-              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-6"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button
-            onClick={(event) => handleLogin(event, email, password)}
-            type="submit"
-            className="bg-blue-500 text-white rounded-xl p-3 w-full hover:bg-blue-600 transition duration-300"
-          >
-            Submit
-          </button>
-        </form>
+      <div className="bg-black"> 
+        <div className="absolute">
+          <img src="/onepiece.png" className="h-52" alt="" />
+        </div>
+        <div className="absolute right-0">
+          <img
+            src="/sololeveling-removebg.png"
+            className="h-80 w-full"
+            alt=""
+          />
+        </div>
+        <h1 className="covered-by-your-grace-regular text-center text-3xl font-bold mb-10 mt-32 ">
+          Login
+        </h1>
+        <div className="flex justify-center mt-10 covered-by-your-grace-regular ">
+          <form className="w-full max-w-xs">
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Email"
+                className="bg-slate-700 text-slate-400 rounded-xl p-3 w-full mb-3"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="mb-4">
+              <input
+                type="password"
+                placeholder="Password"
+                className="bg-slate-700 text-slate-400 rounded-xl p-3 w-full mb-6"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button
+              onClick={(event) => handleLogin(event, email, password)}
+              type="submit"
+              className="bg-blue-500 text-white rounded-xl p-3 w-full hover:bg-blue-600 transition duration-300"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

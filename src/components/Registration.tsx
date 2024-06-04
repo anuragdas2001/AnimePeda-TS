@@ -89,14 +89,14 @@ export const Registration: React.FC = () => {
             <input
               type="text"
               placeholder="Username"
-              className="bg-slate-700 text-slate-500 rounded-xl p-3 w-full mb-3"
+              className="bg-slate-700 text-slate-400 rounded-xl p-3 w-full mb-3"
             />
           </div>
           <div className="mb-4">
             <input
               type="email"
               placeholder="Email"
-              className="bg-slate-700 text-slate-500 rounded-xl p-3 w-full mb-3"
+              className="bg-slate-700 text-slate-400 rounded-xl p-3 w-full mb-3"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
