@@ -10,7 +10,7 @@ const navlinks = [
   // { name: "Recommendations", link: "/recommendations" },
 ];
 export const Navbar: React.FC = () => {
-  const {isDark,toggleTheme} = useDarkMode();
+  const {toggleTheme} = useDarkMode();
 
   return (
     <>
