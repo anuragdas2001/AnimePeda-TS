@@ -99,12 +99,12 @@ export const Home: React.FC = () => {
       />
       {isLoading && (
         <div
-        //   style={{
-        //     position: "fixed",
-        //     top: "50%",
-        //     left: "50%",
-        //     transform: "translate(-50%, -50%)",
-        //   }}
+          // style={{
+          //   position: "fixed",
+          //   top: "50%",
+          //   left: "50%",
+          //   transform: "translate(-50%, -50%)",
+          // }}
         >
           <LoadingHome />
         </div>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { MangaItems } from "./MangaItems";
 import { LoadingHome } from "./Loading Components/LoadingHome";
 
-export const Manga = () => {
+export const Manga:React.FC = () => {
   const [manga, setManga] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
