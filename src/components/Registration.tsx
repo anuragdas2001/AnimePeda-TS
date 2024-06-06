@@ -64,7 +64,7 @@ export const Registration: React.FC = () => {
           alt="Centered Image"
         ></img>
       </div> */}
-      <div className="border-2 border-yellow-500 h-screen bg-black text-white">
+      <div className="h-screen bg-black text-white">
       <div className="w-full ml-14">
         <img
           src="https://media.giphy.com/media/Lpi3F7hFedErKjGvvC/giphy.gif"

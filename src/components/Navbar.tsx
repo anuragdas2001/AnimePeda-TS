@@ -6,7 +6,7 @@ const navlinks = [
   { name: "Home", link: "/home", img: "/haunted-house.png" },
   { name: "Genre", link: "/genre", img: "/genre.png" },
   { name: "Manga", link: "/Manga", img: "/comic.png" },
-  { name: "Favourites", link: "/Favourties", img: "/star.png" },
+  { name: "Favourites", link: "/favourites", img: "/star.png" },
   // { name: "Recommendations", link: "/recommendations" },
 ];
 export const Navbar: React.FC = () => {

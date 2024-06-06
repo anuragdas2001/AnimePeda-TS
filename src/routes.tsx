@@ -8,18 +8,20 @@ import { StreamAnime } from "./components/StreamAnime";
 import { SplashScreen } from "./components/SplashScreen";
 import { Registration } from "./components/Registration";
 import { Login } from "./components/Login";
+import { Favourite } from "./components/Favourite";
 export const router = createBrowserRouter([
- { path: "/", element: <SplashScreen /> },
+  { path: "/", element: <SplashScreen /> },
 
   {
     path: "/",
     element: <Navbar />,
     children: [
-    //   { path: "/", element: <SplashScreen /> },
+      //   { path: "/", element: <SplashScreen /> },
       { path: "/home", element: <Home /> },
       { path: "/manga", element: <Manga /> },
       { path: "/genre", element: <Genre /> },
       { path: "/genreItems/:genre", element: <GenreItems /> },
+      { path: "/favourites", element: <Favourite /> },
     ],
   },
   { path: "/", element: <SplashScreen /> },

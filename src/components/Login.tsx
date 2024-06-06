@@ -26,7 +26,7 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <div className="bg-black border-2 border-orange-500 h-screen"> 
+      <div className="bg-black h-screen"> 
         <div className="absolute mt-20">
           <img src="/onepiece.png" className="h-52" alt="" />
         </div>

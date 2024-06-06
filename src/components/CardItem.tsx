@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useFavourite } from "../context/FavouriteContext";
+
 interface CardItemProps {
-  title:string;
-  title_english:string;
-  title_japanese:string;
+  title: string;
+  title_english: string;
+  title_japanese: string;
   genres: { name: string }[];
   img: string;
   score: number;
@@ -35,6 +37,26 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
     },
     ref
   ) => {
+    const { handleFavourite } = useFavourite();
+
+    const addFavourite = () => {
+      handleFavourite({
+        title,
+        title_english,
+        title_japanese,
+        genres,
+        img,
+        score,
+        status,
+        year,
+        episodes,
+        type,
+        synopsis,
+        trailer,
+        isDark,
+      });
+    };
+
     return (
       <>
         <div
@@ -71,7 +93,7 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
               </div>
               <div className="flex justify-start items-start text-xs font-semibold">
                 Episodes: {episodes}
-              </div> 
+              </div>
               <div className="flex justify-start items-start text-xs font-semibold">
                 Japanese title: {title_japanese}
               </div>
@@ -80,7 +102,10 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
               </div>
             </div>
             <div className="flex justify-end space-x-2 text-black">
-              <button className=" h-10 w-auto bg-yellow-300 rounded-md text-sm p-2">
+              <button
+                onClick={addFavourite}
+                className=" h-10 w-auto bg-yellow-300 rounded-md text-sm p-2"
+              >
                 Add to Favourites
               </button>
               <a href={trailer} target="_blank" rel="noopener noreferrer">
@@ -88,13 +113,10 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
                   Watch Trailer
                 </button>
               </a>
-              {/* {console.log(title)} */}
               <Link to={`/StreamAnime/${title}/episode-${1}`}>
-                <a href={trailer} target="_blank" rel="noopener noreferrer">
-                  <button className=" h-10 w-auto  bg-lime-500 rounded-md text-sm p-2">
-                    Watch Now
-                  </button>
-                </a>
+                <button className=" h-10 w-auto  bg-lime-500 rounded-md text-sm p-2">
+                  Watch Now
+                </button>
               </Link>
             </div>
           </div>
