@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase/FirebaseInit.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 export const Registration: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -115,8 +115,8 @@ export const Registration: React.FC = () => {
           </button>
         </form>
       </div>
-      <div className="text-center">
-          <p>Account already exists try to login</p>
+      <div className="text-center mt-5">
+          <p>Account already exists ? try to <Link className="underline" to="/login">login</Link></p>
       </div>
       <div className="text-center">
         {register && <p>Redirecting to login page in {time} seconds.</p>}
