@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/FirebaseInit";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export const Login = () => {
+export const Login:React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ export const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode,errorMessage);
       });
   };
 

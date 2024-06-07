@@ -43,6 +43,7 @@ export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
 
     const addFavourite = () => {
       handleFavourite({
+        id,
         title,
         title_english,
         title_japanese,
