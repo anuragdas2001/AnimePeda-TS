@@ -1,35 +1,43 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { createClient } from "@supabase/supabase-js";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
-const SUPABASE_URL = "https://mvoltmxzeywbmfdgasdu.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12b2x0bXh6ZXl3Ym1mZGdhc2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMjg5MDAsImV4cCI6MjAzMTgwNDkwMH0.rsvLTGJvoA4x7XHMiwaFq8jMZk0cJO9PIG5SWpTBnWQ";
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supabase } from "../supabase/supabaseClient";
 
 interface CardItemProps {
-    title: string;
-    title_english: string;
-    title_japanese: string;
-    genres: { name: string }[];
-    img: string;
-    score: number;
-    status: string;
-    year: number;
-    episodes: number;
-    type: string;
-    synopsis: string;
-    trailer: string;
-    isDark: boolean;
+  id?: number; // Make id optional
+  title: string;
+  title_english: string;
+  title_japanese: string;
+  genres: { name: string }[];
+  img: string;
+  score: number;
+  status: string;
+  year: number;
+  episodes: number;
+  type: string;
+  synopsis: string;
+  trailer: string;
+  isDark: boolean;
 }
 
 interface FavouriteContextType {
   favourites: CardItemProps[];
   handleFavourite: (item: CardItemProps) => void;
+  handleRemoveFavourite: (id: number) => void;
 }
 
-const FavouriteContext = createContext<FavouriteContextType | undefined>(undefined);
+const FavouriteContext = createContext<FavouriteContextType | undefined>(
+  undefined
+);
 
-export const FavouriteProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const FavouriteProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [favourites, setFavourites] = useState<CardItemProps[]>([]);
 
   useEffect(() => {
@@ -50,8 +58,13 @@ export const FavouriteProvider: React.FC<{ children: ReactNode }> = ({ children 
   }, []);
 
   const handleFavourite = async (item: CardItemProps) => {
+    const itemWithoutId = { ...item };
+    delete itemWithoutId.id; // Remove the id field
+
     try {
-      const { error } = await supabase.from("favourites").insert([item]);
+      const { error } = await supabase
+        .from("favourites")
+        .insert([itemWithoutId]);
       if (error) {
         console.error("Error inserting favourite:", error);
       } else {
@@ -62,8 +75,26 @@ export const FavouriteProvider: React.FC<{ children: ReactNode }> = ({ children 
     }
   };
 
+  const handleRemoveFavourite = async (id: number) => {
+    console.log("Inside handleRemoveFavourite");
+    try {
+      const { error } = await supabase.from("favourites").delete().eq("id", id);
+      if (error) {
+        console.error("Error removing favourite:", error);
+      } else {
+        setFavourites((prevFavourites) =>
+          prevFavourites.filter((item) => item.id !== id)
+        );
+      }
+    } catch (err) {
+      console.error("Error removing favourite:", err);
+    }
+  };
+
   return (
-    <FavouriteContext.Provider value={{ favourites, handleFavourite }}>
+    <FavouriteContext.Provider
+      value={{ favourites, handleFavourite, handleRemoveFavourite }}
+    >
       {children}
     </FavouriteContext.Provider>
   );

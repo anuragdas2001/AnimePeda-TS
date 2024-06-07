@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase/FirebaseInit.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate, Link } from "react-router-dom";
-export const Registration: React.FC = () => {
+import { useNavigate } from "react-router-dom";
+export const Registration = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
   const [register, setRegister] = useState<boolean>(false);
-  const [accExists, setAccExists] = useState<boolean>(false);
   const [time, setTime] = useState<number>(3);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,7 +20,7 @@ export const Registration: React.FC = () => {
     }, 1000); // Run every second
     // Clear the timer when the component unmounts or when time changes
     return () => clearTimeout(timer);
-  }, [register, time, accExists]);
+  }, [register, time]);
 
   const handleRegister = (event: any, email: string, password: string) => {
     event.preventDefault();
@@ -33,23 +32,21 @@ export const Registration: React.FC = () => {
         console.log(password);
         const user = userCredential.user;
         console.log(user);
-        // if (!register) {
-        //   setRegister(true);
-        // }
-        setRegister(true);
-        setAccExists(true);
-        navigate("/login");
+        if (!register) {
+          setRegister(true);
+        }
+        // navigate("/login");
         // ...
       })
       // .catch(() => {
       //   //If already registered then redirect to login page
+      //   navigate("/login");
       // })
       .catch((error) => {
+        const errorCode = error.code;
         const errorMessage = error.message;
         if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
-            
-            setAccExists(true);
-        //   navigate("/login");
+          setRegister(true);
         }
         console.log(errorMessage);
       });
@@ -64,7 +61,6 @@ export const Registration: React.FC = () => {
           alt="Centered Image"
         ></img>
       </div> */}
-      <div className="h-screen bg-black text-white">
       <div className="w-full ml-14">
         <img
           src="https://media.giphy.com/media/Lpi3F7hFedErKjGvvC/giphy.gif"
@@ -79,24 +75,24 @@ export const Registration: React.FC = () => {
           title="Giphy Embed"
         ></img>
       </div>
-      <h1 className="covered-by-your-grace-regular text-center text-3xl font-bold mb-10 mt-10 ">
+      <h1 className="covered-by-your-grace-regular text-center text-3xl font-bold mb-10 mt-32 ">
         Registration
       </h1>
 
-      <div className="flex justify-center mt-5 covered-by-your-grace-regular">
+      <div className="flex justify-center mt-10 covered-by-your-grace-regular">
         <form className="w-full max-w-xs">
           <div className="mb-4">
             <input
               type="text"
               placeholder="Username"
-              className="bg-slate-700 text-slate-400 rounded-xl p-3 w-full mb-3"
+              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-3"
             />
           </div>
           <div className="mb-4">
             <input
               type="email"
               placeholder="Email"
-              className="bg-slate-700 text-slate-400 rounded-xl p-3 w-full mb-3"
+              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-3"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -105,7 +101,7 @@ export const Registration: React.FC = () => {
             <input
               type="password"
               placeholder="Password"
-              className="bg-slate-700 text-slate-500 rounded-xl p-3 w-full mb-6"
+              className="bg-slate-100 dark:bg-slate-700 dark:text-white rounded-xl p-3 w-full mb-6"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -119,18 +115,13 @@ export const Registration: React.FC = () => {
           </button>
         </form>
       </div>
-      <div className="text-center mt-2">
-        {accExists && <p>Account already exists try to login</p>}
+      <div className="text-center">
+        {register && <p>Account already exists try to login</p>}
       </div>
-      <div className="text-center mt-5">
-        <p>
-          Have an account ? <Link to="/login">Login</Link>
-        </p>
+      <div className="text-center">
+        {register && <p>Redirecting to login page in {time} seconds.</p>}
       </div>
-      {/* <div className="text-center">
-        {accExists && <p>Redirecting to login page in {time} seconds.</p>}
-      </div> */}
-     
+
       {/* <div className="w-40 h-40">
         <iframe
           src="https://giphy.com/embed/9Jb0K4r143JTLDynH6"
@@ -175,8 +166,6 @@ export const Registration: React.FC = () => {
         title="Giphy Embed"
       ></iframe>
     </div> */}
-      </div>
-      
     </>
   );
 };

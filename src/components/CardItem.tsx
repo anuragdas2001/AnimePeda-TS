@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useFavourite } from "../context/FavouriteContext";
 
 interface CardItemProps {
+  id?: number;
   title: string;
   title_english: string;
   title_japanese: string;
@@ -21,6 +22,7 @@ interface CardItemProps {
 export const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
   (
     {
+      id,
       title,
       title_english,
       title_japanese,

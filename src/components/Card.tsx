@@ -1,37 +1,38 @@
 import React from "react";
-import { CardItem } from "./CardItem";
+import {CardItem} from "./CardItem";
+
 interface Anime {
-    title:string;
-    title_english: string;
-    title_japanese: string;
-    genres: { name: string }[];
-    images: { jpg: { large_image_url: string } };
-    score: number;
-    status: string;
-    year: number;
-    episodes: number;
-    type: string;
-    synopsis: string;
-    trailer: { url: string };
-  }
-interface CardProps {
-    animeData:Anime[];
-    lastAnimeElementRef: (node: Element | null) => void;
-    isDark: boolean;
+  id: number; // Ensure there's an id field
+  title: string;
+  title_english: string;
+  title_japanese: string;
+  genres: { name: string }[];
+  images: { jpg: { large_image_url: string } };
+  score: number;
+  status: string;
+  year: number;
+  episodes: number;
+  type: string;
+  synopsis: string;
+  trailer: { url: string };
 }
 
-const Card:React.FC<CardProps> = ({ animeData, lastAnimeElementRef, isDark }) => {
-  console.log(animeData);
+interface CardProps {
+  animeData: Anime[];
+  lastAnimeElementRef: (node: Element | null) => void;
+  isDark: boolean;
+}
+
+const Card: React.FC<CardProps> = ({ animeData, lastAnimeElementRef, isDark }) => {
   return (
     <>
       {animeData.map((anime, index) => {
-        console.log("English", anime.title_english);
-        console.log("Title",anime.title);
         if (animeData.length === index + 1) {
           return (
             <CardItem
               ref={lastAnimeElementRef}
-              key={index}
+              key={anime.id}
+              id={anime.id}
               title={anime.title}
               title_english={anime.title_english}
               title_japanese={anime.title_japanese}
@@ -50,7 +51,8 @@ const Card:React.FC<CardProps> = ({ animeData, lastAnimeElementRef, isDark }) =>
         } else {
           return (
             <CardItem
-              key={index}
+              key={anime.id}
+              id={anime.id}
               title={anime.title}
               title_english={anime.title_english}
               title_japanese={anime.title_japanese}
