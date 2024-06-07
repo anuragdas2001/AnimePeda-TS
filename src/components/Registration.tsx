@@ -116,7 +116,7 @@ export const Registration: React.FC = () => {
         </form>
       </div>
       <div className="text-center">
-        {register && <p>Account already exists try to login</p>}
+          <p>Account already exists try to login</p>
       </div>
       <div className="text-center">
         {register && <p>Redirecting to login page in {time} seconds.</p>}
