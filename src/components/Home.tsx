@@ -4,8 +4,8 @@ import { LoadingHome } from "./Loading Components/LoadingHome";
 import axios from "axios";
 import { SearchBarAnime } from "./SearchBarAnime";
 import { useDarkMode } from "../context/DarkModeContext";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Home: React.FC = () => {
   const [anime, setAnime] = useState<any[]>([]);
@@ -73,25 +73,27 @@ export const Home: React.FC = () => {
   );
 
   // Show a toast message when the dark mode is enabled by default
-  // useEffect(() => {
-  //   if (isDark) {
-  //     toast.dark("Dark Mode turned on, because your 👀 deserves it", {
-  //       position: "top-center",
-  //       autoClose: 2500,
-  //       hideProgressBar: true,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //     });
-  //   }
-  // }, [isDark]);
+  useEffect(() => {
+    if (isDark) {
+      toast.dark("Dark Mode turned on, because your 👀 deserves it", {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [isDark]);
 
   console.log(anime);
-  console.log(isDark)
+  console.log(isDark);
   return (
     <>
-      <div className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
+      <div
+        className={`${isDark ? "bg-black text-white" : "bg-white text-black"}`}
+      >
         <SearchBarAnime onSearch={handleSearch} />
         <Card
           animeData={anime}
@@ -110,7 +112,7 @@ export const Home: React.FC = () => {
             <LoadingHome />
           </div>
         )}
-        {/* <ToastContainer /> */}
+        <ToastContainer />
       </div>
     </>
   );
