@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase/FirebaseInit.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-export const Registration:React.FC = () => {
+export const Registration: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export const Registration:React.FC = () => {
         if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
           setRegister(true);
         }
-        console.log(errorMessage);
+        console.log(errorCode, errorMessage);
       });
   };
 
