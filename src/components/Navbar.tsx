@@ -59,6 +59,14 @@ export const Navbar: React.FC = () => {
             </svg>
           </label>
         </ul>
+        <div
+          id="profile"
+          className="absolute top-0 right-0 m-1 h-12 w-12 rounded-full hover:shadow-2xl hover:shadow-lime-300"
+        >
+          <Link to="/profile">
+            <img src="/public/onepiece.png" alt="Profile" className="h-full w-full object-cover" />
+          </Link>
+        </div>
       </div>
       <Outlet/>
     </>

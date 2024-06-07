@@ -9,6 +9,7 @@ import { SplashScreen } from "./components/SplashScreen";
 import { Registration } from "./components/Registration";
 import { Login } from "./components/Login";
 import { Favourite } from "./components/Favourite";
+import { Profile } from "./components/Profile";
 export const router = createBrowserRouter([
   { path: "/", element: <SplashScreen /> },
 
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: "/genre", element: <Genre /> },
       { path: "/genreItems/:genre", element: <GenreItems /> },
       { path: "/favourites", element: <Favourite /> },
+      { path: "/profile", element: <Profile /> },
     ],
   },
   { path: "/", element: <SplashScreen /> },
